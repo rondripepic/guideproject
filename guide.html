@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>guides</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    /* Layout container */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    /* Base AP button style */
+    .ap-button {
+      background: linear-gradient(135deg, #2193b0, #6dd5ed);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    /* Hover effect */
+    .ap-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(33, 147, 176, 0.6);
+    }
+
+    .dropdown-menu {
+      display: none;
+      margin: 12px auto 0;
+      width: 220px;
+      background: #1e1e1e;
+      border: 1px solid #2f2f2f;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      background: none;
+      border: none;
+      color: white;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background: #2b2b2b;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>dropdown menu</h1>
+
+  <button class="ap-button" id="menuButton">Open menu</button>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <button class="dropdown-item">Burger</button>
+    <button class="dropdown-item">Fries</button>
+    <button class="dropdown-item">Cola</button>
+  </div>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    menuButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+      dropdownMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function () {
+      dropdownMenu.classList.remove("show");
+    });
+  </script>
+</body>
+</html>
