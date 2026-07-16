@@ -4,58 +4,159 @@
   <title>guides</title>
 
   <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial;
-      background-color: #121212;
-      color: white;
-      text-align: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #172033);
+      color: var(--text);
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .page-shell {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin: 0 0 10px;
+      font-size: 32px;
     }
 
-    /* Layout container */
-    .button-container {
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .roadmap {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 20px;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      padding-left: 6px;
     }
 
-    /* Base AP button style */
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+      opacity: 0.7;
+    }
+
+    .step-card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-left: 28px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .step-card::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 24px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--panel);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .step-number {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+    }
+
+    .step-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .step-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     .ap-button {
-      background: linear-gradient(135deg, #2193b0, #6dd5ed);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: white;
       border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.25s;
     }
 
-    /* Hover effect */
     .ap-button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px rgba(33, 147, 176, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(56, 189, 248, 0.25);
     }
 
     .text-box {
       display: none;
-      margin: 12px auto 0;
-      width: 260px;
-      padding: 14px;
-      background: #1e1e1e;
-      border: 1px solid #2f2f2f;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      color: #e6e6e6;
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: #e2e8f0;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .text-box.show {
@@ -65,50 +166,73 @@
 </head>
 
 <body>
-  <h1>dropdown menu</h1>
+  <div class="page-shell">
+    <div class="hero">
+      <p class="eyebrow">Professional guide</p>
+      <h1>Career Development Roadmap</h1>
+      <p>Review the key milestones below and explore each focus area in a clean, structured format.</p>
+    </div>
 
-  <button class="ap-button" id="menuButton">Open menu</button>
+    <div class="roadmap">
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">01</span>
+          <h3>Define your direction</h3>
+        </div>
+        <p>Clarify your strengths, interests, and the kind of work you want to build toward.</p>
+        <button class="ap-button step-toggle" data-target="step1">View focus</button>
+        <div class="text-box" id="step1">Focus on the roles that align with your values, skills, and long-term goals.</div>
+      </div>
 
-  <div class="text-box" id="infoBox">
-    You clicked the button!
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">02</span>
+          <h3>Build key skills</h3>
+        </div>
+        <p>Develop the practical knowledge and habits that set you apart in your field.</p>
+        <button class="ap-button step-toggle" data-target="step2">View focus</button>
+        <div class="text-box" id="step2">Prioritize reliable skills, strong communication, and consistent improvement.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">03</span>
+          <h3>Create momentum</h3>
+        </div>
+        <p>Turn preparation into action by taking small, measurable steps each week.</p>
+        <button class="ap-button step-toggle" data-target="step3">View focus</button>
+        <div class="text-box" id="step3">Create a steady rhythm of progress through projects, reflection, and follow-through.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">04</span>
+          <h3>Grow with confidence</h3>
+        </div>
+        <p>Use feedback and experience to refine your approach and strengthen your position.</p>
+        <button class="ap-button step-toggle" data-target="step4">View focus</button>
+        <div class="text-box" id="step4">Stay adaptable, keep learning, and build confidence through visible results.</div>
+      </div>
+    </div>
   </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-    <div class="text-box" id="infoBox">
-    You clicked the button!
-  </div>
-  
 
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const infoBox = document.getElementById("infoBox");
+    const buttons = document.querySelectorAll('.step-toggle');
+    const boxes = document.querySelectorAll('.text-box');
 
-    menuButton.addEventListener("click", function (event) {
-      event.stopPropagation();
-      infoBox.classList.toggle("show");
-    });
+    buttons.forEach((button) => {
+      button.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target');
+        const targetBox = document.getElementById(targetId);
 
-    document.addEventListener("click", function () {
-      infoBox.classList.remove("show");
+        boxes.forEach((box) => {
+          if (box !== targetBox) {
+            box.classList.remove('show');
+          }
+        });
+
+        targetBox.classList.toggle('show');
+      });
     });
   </script>
 </body>
