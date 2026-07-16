@@ -44,35 +44,22 @@
       box-shadow: 0 0 15px rgba(33, 147, 176, 0.6);
     }
 
-    .dropdown-menu {
+    .text-box {
       display: none;
       margin: 12px auto 0;
-      width: 220px;
+      width: 260px;
+      padding: 14px;
       background: #1e1e1e;
       border: 1px solid #2f2f2f;
       border-radius: 10px;
-      overflow: hidden;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    }
-
-    .dropdown-menu.show {
-      display: block;
-    }
-
-    .dropdown-item {
-      display: block;
-      width: 100%;
-      padding: 12px 14px;
-      background: none;
-      border: none;
-      color: white;
-      text-align: left;
+      color: #e6e6e6;
       font-size: 14px;
-      cursor: pointer;
+      line-height: 1.5;
     }
 
-    .dropdown-item:hover {
-      background: #2b2b2b;
+    .text-box.show {
+      display: block;
     }
   </style>
 </head>
@@ -82,23 +69,46 @@
 
   <button class="ap-button" id="menuButton">Open menu</button>
 
-  <div class="dropdown-menu" id="dropdownMenu">
-    <button class="dropdown-item">Burger</button>
-    <button class="dropdown-item">Fries</button>
-    <button class="dropdown-item">Cola</button>
+  <div class="text-box" id="infoBox">
+    You clicked the button!
   </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+    <div class="text-box" id="infoBox">
+    You clicked the button!
+  </div>
+  
 
   <script>
     const menuButton = document.getElementById("menuButton");
-    const dropdownMenu = document.getElementById("dropdownMenu");
+    const infoBox = document.getElementById("infoBox");
 
     menuButton.addEventListener("click", function (event) {
       event.stopPropagation();
-      dropdownMenu.classList.toggle("show");
+      infoBox.classList.toggle("show");
     });
 
     document.addEventListener("click", function () {
-      dropdownMenu.classList.remove("show");
+      infoBox.classList.remove("show");
     });
   </script>
 </body>
